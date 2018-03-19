@@ -11,8 +11,9 @@
 
 use think\Route;
 
-Route::rule('hello/:name','index/Index/hello','POST/GET');
+Route::rule('hello/:name','frontend/Index/hello','POST/GET');
 Route::rule('user/:id','frontend/Index/index');
+Route::rule('/','frontend/Index/index');
 
 
 return [
@@ -20,7 +21,7 @@ return [
         'name' => '\w+',
     ],
     '[news]'     => [
-        ':id'   => ['index/Index', ['method' => 'get'], ['id' => '\d+']],
+        ':id'   => ['frontend/index/Index', ['method' => 'get'], ['id' => '\d+']],
     ],
     '[old]'     => [
         ':id'   => ['backend/Index/hello', ['method' => 'get'], ['id' => '\d+']],
