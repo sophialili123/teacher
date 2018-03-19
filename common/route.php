@@ -13,7 +13,6 @@ use think\Route;
 
 Route::rule('hello/:name','frontend/Index/hello','POST/GET');
 Route::rule('user/:id','frontend/Index/index');
-Route::rule('/','frontend/Index/index');
 
 
 return [
