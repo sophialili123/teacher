@@ -1,11 +1,11 @@
 <?php
 namespace app\backend\controller;
 
-class Index
+class Home
 {
     public function index()
     {
-        return '我是backend的index方法2222';
+        return '我是backend的home的index方法';
     }
 
     public function hello($id){

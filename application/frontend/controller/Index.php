@@ -5,7 +5,7 @@ class Index
 {
     public function index()
     {
-        return '我是frontend的index方法';
+        return '我是frontend的index的index方法';
     }
 
     public function test($id,$name){
