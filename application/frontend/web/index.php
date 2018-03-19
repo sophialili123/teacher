@@ -14,7 +14,6 @@
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
 define('APP_AUTO_BUILD',true);//打开自动生成
-define('CONF_PATH', __DIR__.'/../common/');//修改全局配置文件的路径
 
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
