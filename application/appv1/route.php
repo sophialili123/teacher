@@ -11,24 +11,17 @@
 
 use think\Route;
 
-//完整域名绑定到app模块
-Route::domain('app.teacher.com','appv1');
-// 完整域名绑定到backend模块
-Route::domain('admin.teacher.com','backend');
+////完整域名绑定到app模块
+//Route::domain('app.teacher.com','appv1');
+//// 完整域名绑定到backend模块
+//Route::domain('admin.teacher.com','backend');
 
 Route::rule('hello/:name','frontend/Index/hello','POST/GET');
 Route::rule('user/:id','frontend/Index/index');
 
 
 return [
-    //检查变量规则
-    '__pattern__' => [
-        'name' => '\w+',
-    ],
     '[User]'     => [
-        ':id'   => ['frontend/index/Index', ['method' => 'get'], ['id' => '\d+']],
+        ':id'   => ['appv1/Home/hello', ['method' => 'get'], ['id' => '\d+']],
     ],
-    '[old]'     => [
-        ':id'   => ['backend/Index/hello', ['method' => 'get'], ['id' => '\d+']],
-    ]
 ];
