@@ -14,6 +14,13 @@ return [
     // | 应用设置
     // +----------------------------------------------------------------------
 
+    //如果配置该项，需将app_debug改为false,即部署模式，而不是调试模式
+    'http_exception_template'    =>  [
+        // 定义404错误的重定向页面地址
+        404 =>  APP_PATH.'../public/html/404.html',
+        // 还可以定义其它的HTTP status
+        401 =>  APP_PATH.'401.html',
+    ],
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace

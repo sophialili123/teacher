@@ -7,7 +7,7 @@ class Home extends Controller
 {
     public function index()
     {
-        return '我是frontend的home的index方法111';
+        return '我是frontend下的home的index方法';
     }
 
     public function test($id,$name){

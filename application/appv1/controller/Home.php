@@ -7,7 +7,7 @@ class Home extends Rest
 {
     public function index()
     {
-        return '我是backend的home的index方法';
+        return '我是appv1的home的index方法';
     }
 
     public function hello($id){
