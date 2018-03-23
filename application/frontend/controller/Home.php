@@ -2,6 +2,7 @@
 namespace app\frontend\controller;
 
 use think\Controller;
+use think\Request;
 
 class Home extends Controller
 {
@@ -15,6 +16,12 @@ class Home extends Controller
     }
 
     public function login(){
-        return $this->fetch('index',['title'=>'登录']);
+        return $this->fetch('login',['title'=>'登录']);
+    }
+
+    public function register(){
+        $data = Request::instance()->param();
+        print_r(Request::instance()->param());
+        return $this->fetch('reg',['title'=>'注册']);
     }
 }

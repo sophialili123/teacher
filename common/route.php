@@ -19,6 +19,9 @@ Route::domain('admin.teacher.com','backend');
 Route::rule('hello/:name','frontend/Index/hello','POST/GET');
 Route::rule('user/:id','frontend/Index/index');
 
+Route::rule('login','frontend/Home/login');
+Route::rule('register','frontend/Home/register');
+
 
 return [
     //检查变量规则
