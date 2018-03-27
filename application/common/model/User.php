@@ -1,20 +1,31 @@
 <?php
 namespace app\common\model;
+
 use think\Model;
 
-/**
- * Created by PhpStorm.
- * User: LilyMM
- * Date: 2018/3/22
- * Time: 17:01
- */
-class User extends Model
+class User extends BaseModel
 {
-    // 设置当前模型对应的完整数据表名称,可以不设，默认为驼峰型，去掉前缀
-//    protected $table = 'hs_user';
+    public function add($data = []) {
+        // 如果提交的数据不是数组
+        if(!is_array($data)) {
+            exception('传递的数据不是数组');
+        }
 
-//    protected $code;
-    public function getUser(){
-        return 111;
+        $data['status'] = 1;
+        return $this->data($data)->allowField(true)
+            ->save();
+    }
+
+    /**
+     * 根据用户名获取用户信息
+     * @param $username
+     */
+    public function getUserByUsername($username) {
+        if(!$username) {
+            exception('用户名不合法');
+        }
+
+        $data = ['username' => $username];
+        return $this->where($data)->find();
     }
 }

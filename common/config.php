@@ -14,6 +14,9 @@ return [
     // | 应用设置
     // +----------------------------------------------------------------------
 
+    // 应用命名空间
+    'app_namespace'          => 'app',
+
     //如果配置该项，需将app_debug改为false,即部署模式，而不是调试模式
     'http_exception_template'    =>  [
         // 定义404错误的重定向页面地址
@@ -61,11 +64,11 @@ return [
     // +----------------------------------------------------------------------
 
     // 默认模块名
-    'default_module'         => 'frontend',
+    'default_module'         => 'index',
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
-    'default_controller'     => 'Home',
+    'default_controller'     => 'Index',
     // 默认操作名
     'default_action'         => 'index',
     // 默认验证器
@@ -90,7 +93,7 @@ return [
     // URL伪静态后缀
     'url_html_suffix'        => 'html',
     // URL普通方式参数 用于自动生成
-    'url_common_param'       => false,
+    'url_common_param'       => true,
     // URL参数方式 0 按名称成对解析 1 按顺序解析
     'url_param_type'         => 0,
     // 是否开启路由
@@ -149,6 +152,7 @@ return [
     'view_replace_str'       => [
         '__PUBLIC__'=>'/public',
         '__ROOT__' => '/',
+        '__STATIC__' => '/static',
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -179,6 +183,8 @@ return [
         'path'  => LOG_PATH,
         // 日志记录级别
         'level' => [],
+        // error sql log 抽离出来
+        'apart_level' => ['sql','error','log'],
     ],
 
     // +----------------------------------------------------------------------

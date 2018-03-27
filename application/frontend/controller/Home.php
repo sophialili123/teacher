@@ -7,12 +7,29 @@ use think\Loader;
 use think\Request;
 use think\Validate;
 
-class Home extends Controller
+class Home extends Common
 {
     public function index()
     {
-        return '我是frontend下的home的index方法';
+        //return [1,2];
+        // 获取首页大图 相关数据
+        // 获取广告位相关的数据
+        // 商品分类 数据-美食 推荐的数据
+        $datas = model('Deal')->getNormalDealByCategoryCityId(1, $this->city->id);
+        // 获取4个子分类
+        $meishicates = model('Category')->getNormalRecommendCategoryByParentId(1, 4);
+        return $this->fetch('',[
+            'datas' => $datas,
+            'meishicates' => $meishicates,
+            'controller' => 'ms',
+        ]);
     }
+
+
+//    public function index()
+//    {
+//        return '我是frontend下的home的index方法';
+//    }
 
     public function test($id,$name){
         return $id.$name;
