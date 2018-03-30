@@ -114,4 +114,41 @@ class Register extends  Controller
             'detail' => $detail,
         ]);
     }
+
+    /**
+     * 异步获取经纬度
+     * @param  [type] $address [description]
+     * @return json          [description]
+     */
+    public function getLngLat(){
+        if(!request()->isAjax()){
+            $this->error('页面不存在', url('/'));
+        }
+
+        $address = input('post.address', '', 'trim');
+        $lngLat = \Map::getLngLat($address);
+        ob_end_clean();
+        if(empty($lngLat) || $lngLat['status'] != 0 || $lngLat['result']['precise'] != 1){
+            return $this->result('', 1, '无法获取数据，或者匹配的地址不精确');
+        }
+        return $this->result($lngLat, 0, 'ok');
+    }
+
+    /**
+     * 异步验证用户名
+     * @param  [type] $username [description]
+     * @return [type]           [description]
+     */
+    public function checkUsername($username){
+        if(!request()->isAjax()){
+            $this->error('页面不存在', url('/'));
+        }
+
+        $username = input('username', '', 'trim');
+        ob_end_clean();
+        if(model('BisAccount')->where(['username' => $username])->value('id')){
+            return $this->result('', 1, '用户名已存在');
+        }
+        return $this->result('', 0, 'ok');
+    }
 }
